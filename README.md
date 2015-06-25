@@ -1,0 +1,2 @@
+# savitzkyGolay
+Savitzky–Golay filter
