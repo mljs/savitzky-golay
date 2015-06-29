@@ -19,7 +19,11 @@ var defaultOptions = {
     pol: 2
 };
 
-
+/**
+ * Applies the filter
+ * @param options
+ * @returns {Array}
+ */
 SavitzkyGolay.prototype.calc = function (options) {
     options = options || {};
     this.options = {};
@@ -68,7 +72,7 @@ SavitzkyGolay.prototype.calc = function (options) {
     for (var k = Math.ceil(this.options.windSize / 2); k < (ans.length - Math.floor(this.options.windSize / 2)); k++) {
         var d = 0;
         for (var l = 0; l < C.length; l++) {
-            d += C[l] * this.data[l + k - Math.floor(this.options.windSize / 2)] / norm;
+            d += C[l] * this.data[l + k - Math.floor(this.options.windSize / 2)] / (norm * Math.pow(this.h, this.options.deriv));
         }
         ans[k] = d;
     }

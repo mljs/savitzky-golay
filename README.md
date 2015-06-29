@@ -1,9 +1,9 @@
 # SavitzkyGolay
 
-    [![NPM version][npm-image]][npm-url]
-    [![build status][travis-image]][travis-url]
-    [![David deps][david-image]][david-url]
-    [![npm download][download-image]][download-url]
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![David deps][david-image]][david-url]
+[![npm download][download-image]][download-url]
 
 Savitzky–Golay filter in Javascript
 
@@ -15,9 +15,18 @@ This code is based in the article: Savitzky, A., & Golay, M. J. E. (1964). Smoot
 
 ## Methods
  
-### new SavitzkyGolay(data)
+### new SavitzkyGolay(data, dx)
 
-### calc(options)
+Creates a new Savitzky-Golay filter based in the array of `y` values(`data`) and the difference between `x` dots(`dx`).
+
+### calc([options])
+
+Applies the filter using the current options.
+
+__Options__
+* windSize: The amount of dots used to make the filtering evaluation, the default value is 5.
+* deriv: The grade for the derivative, the default value is 1.
+* pol: The grade of the polynomial function to use for calculation, the default value is 2.
 
 ## Test
 
@@ -28,11 +37,11 @@ $ npm test
 
 ## Authors
 
-    - [Miguel Asencio](https://github.com/maasencioh)
+- [Miguel Asencio](https://github.com/maasencioh)
 
 ## License
 
-    [MIT](./LICENSE)
+[MIT](./LICENSE)
 
 [npm-image]: https://img.shields.io/npm/v/ml-savitzkyGolay.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/ml-savitzkyGolay
