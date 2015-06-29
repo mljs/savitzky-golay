@@ -11,7 +11,7 @@ This code is based in the article: Savitzky, A., & Golay, M. J. E. (1964). Smoot
 
 ## Installation
 
-`npm install ml-savitzkyGolay`
+`npm install ml-savitzky-golay`
 
 ## Methods
  
@@ -43,8 +43,8 @@ $ npm test
 
 [MIT](./LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/ml-savitzkyGolay.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/ml-savitzkyGolay
+[npm-image]: https://img.shields.io/npm/v/ml-savitzky-golay.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/ml-savitzky-golay
 [travis-image]: https://img.shields.io/travis/mljs/savitzkyGolay/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/mljs/savitzkyGolay
 [david-image]: https://img.shields.io/david/mljs/savitzkyGolay.svg?style=flat-square
