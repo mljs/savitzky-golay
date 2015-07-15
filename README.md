@@ -1,4 +1,4 @@
-# SavitzkyGolay
+# savitzky-golay
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
