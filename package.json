@@ -1,6 +1,6 @@
 {
   "name": "ml-savitzky-golay",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Savitzky–Golay filter in Javascript",
   "main": "src/index.js",
   "directories": {
