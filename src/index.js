@@ -76,6 +76,10 @@ SavitzkyGolay.prototype.calc = function (options) {
         }
         ans[k] = d;
     }
+    for (var a = 0; a < Math.ceil(this.options.windSize / 2); a++)
+        ans[a] = ans[Math.ceil(this.options.windSize / 2)];
+    for (var b = (ans.length - Math.floor(this.options.windSize / 2)); b < ans.length; b++)
+        ans[b] = ans[(ans.length - Math.floor(this.options.windSize / 2)) - 1];
     return ans;
 };
 
