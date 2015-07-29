@@ -34,6 +34,7 @@
     "should": "latest"
   },
   "dependencies": {
-    "numeric": "^1.2.6"
+    "numeric": "^1.2.6",
+    "is-integer": "^1.0.4"
   }
 }

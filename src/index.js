@@ -1,6 +1,7 @@
 "use strict";
 
 var numeric = require('numeric');
+var isInteger = require("is-integer");
 
 /**
  * Savitzky-Golay filter
@@ -38,7 +39,7 @@ SavitzkyGolay.prototype.calc = function (options) {
         throw new RangeError('Invalid window size');
     if ((this.options.deriv < 0) || (this.options.pol < 1))
         throw new RangeError('Number too small');
-    if ((this.options.pol !== Math.floor(this.options.pol)) || (this.options.deriv !== Math.floor(this.options.deriv)) || (this.options.windSize !== Math.floor(this.options.windSize)))
+    if (!(isInteger(this.options.pol)) || !(isInteger(this.options.deriv)) || !(isInteger(this.options.windSize)))
         throw new TypeError('Only integers allowed');
 
     var C, norm;
