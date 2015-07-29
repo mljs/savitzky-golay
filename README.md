@@ -7,7 +7,7 @@
 
 Savitzky–Golay filter in Javascript
 
-This code is based in the article: Savitzky, A., & Golay, M. J. E. (1964). Smoothing and Differentiation of Data by Simplified Least Squares Procedures. Analytical Chemistry, 36(8), 1627–1639.
+This code is based in the article: [Smoothing and Differentiation of Data by Simplified Least Squares Procedures](http://dx.doi.org/10.1021/ac60214a047)
 
 ## Installation
 
