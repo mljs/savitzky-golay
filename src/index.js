@@ -1,7 +1,7 @@
 "use strict";
 
-var numeric = require('numeric');
 var isInteger = require("is-integer");
+var matrix = require('ml-matrix');
 
 /**
  * Savitzky-Golay filter
@@ -43,6 +43,7 @@ SavitzkyGolay.prototype.calc = function (options) {
         throw new TypeError('Only integers allowed');
 
     var C, norm;
+    var ans =  new Array(this.data.length);
     if ((this.options.windSize === 5) && (this.options.pol === 2) && ((this.options.deriv === 1) || (this.options.deriv === 2))) {
         if (this.options.deriv === 1) {
             C = [-2,-1,0,1,2];
@@ -65,11 +66,13 @@ SavitzkyGolay.prototype.calc = function (options) {
                     J[i][j] = Math.pow((inic + i), j);
             }
         }
-        C = numeric.dot(numeric.inv(numeric.dot(numeric.transpose(J), J)), numeric.transpose(J));
-        C = C[this.options.deriv].concat();
+        var Jmatrix = new matrix(J);
+        var Jtranspose = Jmatrix.transpose();
+        var Jinv = (Jtranspose.mmul(Jmatrix)).inverse();
+        C = Jinv.mmul(Jtranspose);
+        C = C[this.options.deriv];
         norm = 1;
     }
-    var ans =  new Array(this.data.length);
     for (var k = Math.ceil(this.options.windSize / 2); k < (ans.length - Math.floor(this.options.windSize / 2)); k++) {
         var d = 0;
         for (var l = 0; l < C.length; l++) {
