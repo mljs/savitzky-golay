@@ -6,9 +6,9 @@ describe('Savitzky–Golay test', function () {
 
     it('Smoothing test', function () {
         var options = {
-            windSize: 5,
-            deriv: 0,
-            pol: 3
+            windowSize: 5,
+            derivative: 0,
+            polynomial: 3
         };
         var data = new Array(200);
         for (var i = 0; i < data.length; i++)
@@ -21,9 +21,9 @@ describe('Savitzky–Golay test', function () {
 
     it('First derivative test', function () {
         var options = {
-            windSize: 5,
-            deriv: 1,
-            pol: 3
+            windowSize: 5,
+            derivative: 1,
+            polynomial: 3
         };
         var data = new Array(200);
         for (var i = 0; i < data.length; i++)

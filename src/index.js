@@ -5,19 +5,19 @@ var matrix = require('ml-matrix');
 
 /**
  * Savitzky-Golay filter
- * @param {Array <number>} y
- * @param {number} dx
+ * @param {Array <number>} data
+ * @param {number} h
  * @constructor
  */
-function SavitzkyGolay (y, dx) {
-    this.data = y;
-    this.h = dx
+function SavitzkyGolay (data, h) {
+    this.data = data;
+    this.h = h;
 }
 
 var defaultOptions = {
-    windSize: 5,
-    deriv: 1,
-    pol: 2
+    windowSize: 5,
+    derivative: 1,
+    polynomial: 2
 };
 
 /**
@@ -35,17 +35,17 @@ SavitzkyGolay.prototype.calc = function (options) {
             this.options[o] = defaultOptions[o];
         }
     }
-    if ((this.options.windSize % 2 === 0) || (this.options.windSize < 5))
+    if ((this.options.windowSize % 2 === 0) || (this.options.windowSize < 5))
         throw new RangeError('Invalid window size');
-    if ((this.options.deriv < 0) || (this.options.pol < 1))
+    if ((this.options.derivative < 0) || (this.options.polynomial < 1))
         throw new RangeError('Number too small');
-    if (!(isInteger(this.options.pol)) || !(isInteger(this.options.deriv)) || !(isInteger(this.options.windSize)))
+    if (!(isInteger(this.options.polynomial)) || !(isInteger(this.options.derivative)) || !(isInteger(this.options.windowSize)))
         throw new TypeError('Only integers allowed');
 
     var C, norm;
     var ans =  new Array(this.data.length);
-    if ((this.options.windSize === 5) && (this.options.pol === 2) && ((this.options.deriv === 1) || (this.options.deriv === 2))) {
-        if (this.options.deriv === 1) {
+    if ((this.options.windowSize === 5) && (this.options.polynomial === 2) && ((this.options.derivative === 1) || (this.options.derivative === 2))) {
+        if (this.options.derivative === 1) {
             C = [-2,-1,0,1,2];
             norm = 10;
         }
@@ -55,10 +55,10 @@ SavitzkyGolay.prototype.calc = function (options) {
         }
     }
     else {
-        var J = new Array(this.options.windSize);
+        var J = new Array(this.options.windowSize);
         for (var i = 0; i < J.length; i++) {
-            J[i] = new Array(this.options.pol + 1);
-            var inic = -(this.options.windSize - 1) / 2;
+            J[i] = new Array(this.options.polynomial + 1);
+            var inic = -(this.options.windowSize - 1) / 2;
             for (var j = 0; j < J[i].length; j++) {
                 if ((inic + 1 === 0) && (j === 0))
                     J[i][j] = 1;
@@ -70,20 +70,20 @@ SavitzkyGolay.prototype.calc = function (options) {
         var Jtranspose = Jmatrix.transpose();
         var Jinv = (Jtranspose.mmul(Jmatrix)).inverse();
         C = Jinv.mmul(Jtranspose);
-        C = C[this.options.deriv];
+        C = C[this.options.derivative];
         norm = 1;
     }
-    for (var k = Math.ceil(this.options.windSize / 2); k < (ans.length - Math.floor(this.options.windSize / 2)); k++) {
+    for (var k = Math.ceil(this.options.windowSize / 2); k < (ans.length - Math.floor(this.options.windowSize / 2)); k++) {
         var d = 0;
         for (var l = 0; l < C.length; l++) {
-            d += C[l] * this.data[l + k - Math.floor(this.options.windSize / 2)] / (norm * Math.pow(this.h, this.options.deriv));
+            d += C[l] * this.data[l + k - Math.floor(this.options.windowSize / 2)] / (norm * Math.pow(this.h, this.options.derivative));
         }
         ans[k] = d;
     }
-    for (var a = 0; a < Math.ceil(this.options.windSize / 2); a++)
-        ans[a] = ans[Math.ceil(this.options.windSize / 2)];
-    for (var b = (ans.length - Math.floor(this.options.windSize / 2)); b < ans.length; b++)
-        ans[b] = ans[(ans.length - Math.floor(this.options.windSize / 2)) - 1];
+    for (var a = 0; a < Math.ceil(this.options.windowSize / 2); a++)
+        ans[a] = ans[Math.ceil(this.options.windowSize / 2)];
+    for (var b = (ans.length - Math.floor(this.options.windowSize / 2)); b < ans.length; b++)
+        ans[b] = ans[(ans.length - Math.floor(this.options.windowSize / 2)) - 1];
     return ans;
 };
 

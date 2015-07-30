@@ -15,18 +15,18 @@ This code is based in the article: [Smoothing and Differentiation of Data by Sim
 
 ## Methods
  
-### new SavitzkyGolay(data, dx)
+### new SavitzkyGolay(data, h)
 
-Creates a new Savitzky-Golay filter based in the array of `y` values(`data`) and the difference between `x` dots(`dx`).
+Creates a new Savitzky-Golay filter based in the array of `y` values(`data`) and the difference between `x` dots(`h`).
 
 ### calc([options])
 
 Applies the filter using the current options.
 
 __Options__
-* windSize: The amount of dots used to make the filtering evaluation, the default value is 5.
-* deriv: The grade for the derivative, the default value is 1.
-* pol: The grade of the polynomial function to use for calculation, the default value is 2.
+* windowSize: The amount of dots used to make the filtering evaluation, the default value is 5.
+* derivative: The grade for the derivative, the default value is 1.
+* polynomial: The grade of the polynomial function to use for calculation, the default value is 2.
 
 ## Test
 
