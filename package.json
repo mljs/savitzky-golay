@@ -22,7 +22,10 @@
     "Golay",
     "derivative"
   ],
-  "author": "Miguel Asencio",
+  "author": {
+    "name": "Miguel Asencio",
+    "email": "maasencioh@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mljs/savitzky-golay/issues"
@@ -35,6 +38,7 @@
   },
   "dependencies": {
     "is-integer": "^1.0.4",
-    "ml-matrix": "^0.1.0"
+    "ml-matrix": "^0.1.0",
+    "ml-pad-array": "0.0.0"
   }
 }

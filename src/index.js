@@ -41,20 +41,16 @@ function SavitzkyGolay (data, h, options) {
         }
     }
     else {
-        var J = new Array(options.windowSize);
+        var J = matrix.ones(options.windowSize, options.polynomial + 1);
+        var inic = -(options.windowSize - 1) / 2;
         for (var i = 0; i < J.length; i++) {
-            J[i] = new Array(options.polynomial + 1);
-            var inic = -(options.windowSize - 1) / 2;
             for (var j = 0; j < J[i].length; j++) {
-                if ((inic + 1 === 0) && (j === 0))
-                    J[i][j] = 1;
-                else
+                if ((inic + 1 !== 0) || (j !== 0))
                     J[i][j] = Math.pow((inic + i), j);
             }
         }
-        var Jmatrix = new matrix(J);
-        var Jtranspose = Jmatrix.transpose();
-        var Jinv = (Jtranspose.mmul(Jmatrix)).inverse();
+        var Jtranspose = J.transpose();
+        var Jinv = (Jtranspose.mmul(J)).inverse();
         C = Jinv.mmul(Jtranspose);
         C = C[options.derivative];
         norm = 1;

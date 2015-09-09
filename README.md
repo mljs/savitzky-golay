@@ -13,20 +13,18 @@ This code is based in the article: [Smoothing and Differentiation of Data by Sim
 
 `npm install ml-savitzky-golay`
 
-## Methods
- 
-### new SavitzkyGolay(data, h)
+## SavitzkyGolay(data, h, [options])
 
-Creates a new Savitzky-Golay filter based in the array of `y` values(`data`) and the difference between `x` dots(`h`).
-
-### calc([options])
-
-Applies the filter using the current options.
+Uses the Savitzky-Golay filter based in the array of `y` values(`data`) and the difference between `x` dots(`h`).
 
 __Options__
-* windowSize: The amount of dots used to make the filtering evaluation, the default value is 5.
-* derivative: The grade for the derivative, the default value is 1.
-* polynomial: The grade of the polynomial function to use for calculation, the default value is 2.
+* __windowSize__: The amount of dots used to make the filtering evaluation, the default value is 5.
+* __derivative__: The grade for the derivative, the default value is 1.
+* __polynomial__: The grade of the polynomial function to use for calculation, the default value is 2.
+* __padval__: Determine how to fill the values, if the value don't match with the next strings, the new values are going to be filled with that value. The default value is 0. The special strings are:
+  * `'circular'`: Pad with circular repetition of elements within the dimension.
+  * `'replicate'`: Pad by repeating border elements of array.
+  * `'symmetric'`: Pad array with mirror reflections of itself.
 
 ## Test
 
