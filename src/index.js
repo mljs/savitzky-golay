@@ -1,18 +1,7 @@
-"use strict";
+'use strict';
 
 var isInteger = require("is-integer");
 var matrix = require('ml-matrix');
-
-/**
- * Savitzky-Golay filter
- * @param {Array <number>} data
- * @param {number} h
- * @constructor
- */
-function SavitzkyGolay (data, h) {
-    this.data = data;
-    this.h = h;
-}
 
 var defaultOptions = {
     windowSize: 5,
@@ -21,11 +10,13 @@ var defaultOptions = {
 };
 
 /**
- * Applies the filter
+ * Savitzky-Golay filter
+ * @param {Array <number>} data
+ * @param {number} h
  * @param {Object} options
  * @returns {Array}
  */
-SavitzkyGolay.prototype.calc = function (options) {
+function SavitzkyGolay (data, h, options) {
     options = options || {};
     for (var o in defaultOptions)
         if (!(options.hasOwnProperty(o)))
@@ -38,7 +29,7 @@ SavitzkyGolay.prototype.calc = function (options) {
         throw new RangeError('Polynomial should be a positive integer');
 
     var C, norm;
-    var ans =  new Array(this.data.length);
+    var ans =  new Array(data.length);
     if ((options.windowSize === 5) && (options.polynomial === 2) && ((options.derivative === 1) || (options.derivative === 2))) {
         if (options.derivative === 1) {
             C = [-2,-1,0,1,2];
@@ -71,7 +62,7 @@ SavitzkyGolay.prototype.calc = function (options) {
     for (var k = Math.ceil(options.windowSize / 2); k < (ans.length - Math.floor(options.windowSize / 2)); k++) {
         var d = 0;
         for (var l = 0; l < C.length; l++) {
-            d += C[l] * this.data[l + k - Math.floor(options.windowSize / 2)] / (norm * Math.pow(this.h, options.derivative));
+            d += C[l] * data[l + k - Math.floor(options.windowSize / 2)] / (norm * Math.pow(h, options.derivative));
         }
         ans[k] = d;
     }
@@ -80,6 +71,6 @@ SavitzkyGolay.prototype.calc = function (options) {
     for (var b = (ans.length - Math.floor(options.windowSize / 2)); b < ans.length; b++)
         ans[b] = ans[(ans.length - Math.floor(options.windowSize / 2)) - 1];
     return ans;
-};
+}
 
 module.exports = SavitzkyGolay;
