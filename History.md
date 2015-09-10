@@ -4,6 +4,7 @@ HEAD
 * change numeric.js for ml-matrix
 * change variable and option names
 * remove the instance and just have a function
+* adds the `padval` option
 
 1.0.0
 ============

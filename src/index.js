@@ -1,12 +1,14 @@
 'use strict';
 
-var isInteger = require("is-integer");
+var isInteger = require('is-integer');
 var matrix = require('ml-matrix');
+var padArray = require('ml-pad-array');
 
 var defaultOptions = {
     windowSize: 5,
     derivative: 1,
-    polynomial: 2
+    polynomial: 2,
+    padval: 0
 };
 
 /**
@@ -29,7 +31,8 @@ function SavitzkyGolay (data, h, options) {
         throw new RangeError('Polynomial should be a positive integer');
 
     var C, norm;
-    var ans =  new Array(data.length);
+    var step = Math.floor(options.windowSize / 2);
+    var ans =  new Array(data.length - 2*step);
     if ((options.windowSize === 5) && (options.polynomial === 2) && ((options.derivative === 1) || (options.derivative === 2))) {
         if (options.derivative === 1) {
             C = [-2,-1,0,1,2];
@@ -55,18 +58,14 @@ function SavitzkyGolay (data, h, options) {
         C = C[options.derivative];
         norm = 1;
     }
-    for (var k = Math.ceil(options.windowSize / 2); k < (ans.length - Math.floor(options.windowSize / 2)); k++) {
+    var det = norm * Math.pow(h, options.derivative);
+    for (var k = step; k < (data.length - step); k++) {
         var d = 0;
-        for (var l = 0; l < C.length; l++) {
-            d += C[l] * data[l + k - Math.floor(options.windowSize / 2)] / (norm * Math.pow(h, options.derivative));
-        }
-        ans[k] = d;
+        for (var l = 0; l < C.length; l++)
+            d += C[l] * data[l + k - step] / det;
+        ans[k - step] = d;
     }
-    for (var a = 0; a < Math.ceil(options.windowSize / 2); a++)
-        ans[a] = ans[Math.ceil(options.windowSize / 2)];
-    for (var b = (ans.length - Math.floor(options.windowSize / 2)); b < ans.length; b++)
-        ans[b] = ans[(ans.length - Math.floor(options.windowSize / 2)) - 1];
-    return ans;
+    return padArray(ans, {padsize: step, padval: options.padval});
 }
 
 module.exports = SavitzkyGolay;
