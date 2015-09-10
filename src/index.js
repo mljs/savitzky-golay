@@ -1,7 +1,7 @@
 'use strict';
 
 var isInteger = require('is-integer');
-var matrix = require('ml-matrix');
+var Matrix = require('ml-matrix');
 var padArray = require('ml-pad-array');
 
 var defaultOptions = {
@@ -44,7 +44,7 @@ function SavitzkyGolay (data, h, options) {
         }
     }
     else {
-        var J = matrix.ones(options.windowSize, options.polynomial + 1);
+        var J = Matrix.ones(options.windowSize, options.polynomial + 1);
         var inic = -(options.windowSize - 1) / 2;
         for (var i = 0; i < J.length; i++) {
             for (var j = 0; j < J[i].length; j++) {

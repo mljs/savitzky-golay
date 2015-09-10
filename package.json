@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "is-integer": "^1.0.4",
-    "ml-matrix": "^0.1.0",
-    "ml-pad-array": "0.0.0"
+    "ml-matrix": "^1.0.0",
+    "ml-pad-array": "^1.0.0"
   }
 }
