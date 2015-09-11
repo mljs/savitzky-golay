@@ -1,8 +1,8 @@
 'use strict';
 
-var isInteger = require('is-integer');
 var Matrix = require('ml-matrix');
 var padArray = require('ml-pad-array');
+var extend = require('extend');
 
 var defaultOptions = {
     windowSize: 5,
@@ -19,15 +19,12 @@ var defaultOptions = {
  * @returns {Array}
  */
 function SavitzkyGolay (data, h, options) {
-    options = options || {};
-    for (var o in defaultOptions)
-        if (!(options.hasOwnProperty(o)))
-            options[o] = defaultOptions[o];
-    if ((options.windowSize % 2 === 0) || (options.windowSize < 5) || !(isInteger(options.windowSize)))
+    options = extend({}, defaultOptions, options);
+    if ((options.windowSize % 2 === 0) || (options.windowSize < 5) || !(Number.isInteger(options.windowSize)))
         throw new RangeError('Invalid window size (should be odd and at least 5 integer number)');
-    if ((options.derivative < 0) || !(isInteger(options.derivative)))
+    if ((options.derivative < 0) || !(Number.isInteger(options.derivative)))
         throw new RangeError('Derivative should be a positive integer');
-    if ((options.polynomial < 1) || !(isInteger(options.polynomial)))
+    if ((options.polynomial < 1) || !(Number.isInteger(options.polynomial)))
         throw new RangeError('Polynomial should be a positive integer');
 
     var C, norm;
