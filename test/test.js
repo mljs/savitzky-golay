@@ -24,7 +24,7 @@ describe('Savitzky–Golay test', function () {
             windowSize: 5,
             derivative: 1,
             polynomial: 3,
-            padval: 'replicate'
+            padValue: 'replicate'
         };
         var data = new Array(200);
         for (var i = 0; i < data.length; i++)

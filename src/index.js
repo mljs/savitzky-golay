@@ -8,7 +8,7 @@ var defaultOptions = {
     windowSize: 5,
     derivative: 1,
     polynomial: 2,
-    padval: 0
+    padValue: 0
 };
 
 /**
@@ -65,7 +65,7 @@ function SavitzkyGolay (data, h, options) {
             d += C[l] * data[l + k - step] / det;
         ans[k - step] = d;
     }
-    return padArray(ans, {padsize: step, padval: options.padval});
+    return padArray(ans, {size: step, value: options.padValue});
 }
 
 module.exports = SavitzkyGolay;
