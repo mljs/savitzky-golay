@@ -16,7 +16,6 @@ describe('Savitzky–Golay test', function () {
         var ans = SG(data, 1, options);
         for (var j = 2; j < ans.length - 2; j++)
             ans[j].should.be.approximately(data[j], 0.08);
-        ans[0].should.equal(0);
     });
 
     it('First derivative test', function () {
@@ -32,6 +31,5 @@ describe('Savitzky–Golay test', function () {
         var ans = SG(data, 1, options);
         for (var j = 2; j < ans.length - 2; j++)
             ans[j].should.be.approximately(Math.cos(j), 0.05);
-        ans[0].should.be.approximately(ans[2], 0.001)
     });
 });
