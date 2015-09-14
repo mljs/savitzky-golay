@@ -32,9 +32,9 @@
   },
   "homepage": "https://github.com/mljs/savitzky-golay",
   "devDependencies": {
-    "mocha": "latest",
-    "mocha-better-spec-reporter": "latest",
-    "should": "latest"
+    "mocha": "^2.3.2",
+    "mocha-better-spec-reporter": "^2.1.2",
+    "should": "^7.1.0"
   },
   "dependencies": {
     "extend": "^3.0.0",
