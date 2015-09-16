@@ -8,7 +8,8 @@ var defaultOptions = {
     windowSize: 5,
     derivative: 1,
     polynomial: 2,
-    padValue: 0
+    pad: 'none',
+    padValue: 'replicate'
 };
 
 /**
@@ -29,7 +30,11 @@ function SavitzkyGolay (data, h, options) {
 
     var C, norm;
     var step = Math.floor(options.windowSize / 2);
-    data = padArray(data, {size: step, value: options.padValue});
+
+    if (options.pad === 'pre') {
+        data = padArray(data, {size: step, value: options.padValue});
+    }
+
     var ans =  new Array(data.length - 2*step);
 
     if ((options.windowSize === 5) && (options.polynomial === 2) && ((options.derivative === 1) || (options.derivative === 2))) {
@@ -64,6 +69,11 @@ function SavitzkyGolay (data, h, options) {
             d += C[l] * data[l + k - step] / det;
         ans[k - step] = d;
     }
+
+    if (options.pad === 'post') {
+        ans = padArray(ans, {size: step, value: options.padValue});
+    }
+
     return ans;
 }
 

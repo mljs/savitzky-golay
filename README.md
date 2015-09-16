@@ -21,7 +21,12 @@ __Options__
 * __windowSize__: The amount of dots used to make the filtering evaluation, the default value is 5.
 * __derivative__: The grade for the derivative, the default value is 1.
 * __polynomial__: The grade of the polynomial function to use for calculation, the default value is 2.
-* __padval__: Determine how to fill the values, if the value don't match with the next strings, the new values are going to be filled with that value. The default value is 0. The special strings are:
+* __pad__: How to pad the array to handle borders. Can be one of:
+  * `'none'` (default): No padding. The resulting array will be smaller than the original one.
+  * `'pre'`: Pad the original array before applying the filter
+  * `'post'`: Pad the resulting array after applying the filter
+* __padValue__: If pad is not none, Determine how to fill the values, if the value don't match with the next strings, the new values are going to be filled with that value.
+The default value is 0. The special strings are:
   * `'circular'`: Pad with circular repetition of elements within the dimension.
   * `'replicate'`: Pad by repeating border elements of array.
   * `'symmetric'`: Pad array with mirror reflections of itself.

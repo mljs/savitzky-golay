@@ -14,8 +14,10 @@ describe('Savitzky–Golay test', function () {
         for (var i = 0; i < data.length; i++)
             data[i] = Math.sin(i);
         var ans = SG(data, 1, options);
-        for (var j = 2; j < ans.length - 2; j++)
-            ans[j].should.be.approximately(data[j], 0.08);
+        ans.should.have.lengthOf(196);
+
+        for (var j = 0; j < ans.length; j++)
+            ans[j].should.be.approximately(data[j + 2], 0.08);
     });
 
     it('First derivative test', function () {
@@ -23,7 +25,8 @@ describe('Savitzky–Golay test', function () {
             windowSize: 5,
             derivative: 1,
             polynomial: 3,
-            padValue: 'replicate'
+            pad: 'post',
+            padValue: 0
         };
         var data = new Array(200);
         for (var i = 0; i < data.length; i++)
@@ -31,5 +34,6 @@ describe('Savitzky–Golay test', function () {
         var ans = SG(data, 1, options);
         for (var j = 2; j < ans.length - 2; j++)
             ans[j].should.be.approximately(Math.cos(j), 0.05);
+        ans[0].should.equal(0);
     });
 });
