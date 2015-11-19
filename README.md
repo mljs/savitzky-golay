@@ -7,7 +7,7 @@
 
 Savitzky–Golay filter in Javascript
 
-This code is based in the article: [Smoothing and Differentiation of Data by Simplified Least Squares Procedures](http://dx.doi.org/10.1021/ac60214a047)
+This code is based on the article: [Smoothing and Differentiation of Data by Simplified Least Squares Procedures](http://dx.doi.org/10.1021/ac60214a047)
 
 ## Installation
 
@@ -30,17 +30,6 @@ The default value is 0. The special strings are:
   * `'circular'`: Pad with circular repetition of elements within the dimension.
   * `'replicate'`: Pad by repeating border elements of array.
   * `'symmetric'`: Pad array with mirror reflections of itself.
-
-## Test
-
-```js
-$ npm install
-$ npm test
-```
-
-## Authors
-
-- [Miguel Asencio](https://github.com/maasencioh)
 
 ## License
 
