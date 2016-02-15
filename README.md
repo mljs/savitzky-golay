@@ -31,6 +31,34 @@ The default value is 0. The special strings are:
   * `'replicate'`: Pad by repeating border elements of array.
   * `'symmetric'`: Pad array with mirror reflections of itself.
 
+## Examples
+### Smoothing
+```js
+var SG = require('ml-savitzky-golay');
+var data = [/* ... */];
+var options = {derivative: 0};
+var ans = SG(data, 1, options);
+console.log(ans); // smoothed data
+```
+
+### First derivative with padding
+```js
+var SG = require('ml-savitzky-golay');
+var X = [/* ... */];
+var options = {
+  derivative: 1,
+  pad: 'post',
+  padValue: 'replicate'
+};
+var dX = SG(X, 1, options);
+console.log(dX); // first derivative
+```
+
+## Contributors
+
+* [Miguel Asencio](https://github.com/maasencioh)
+* [Michaël Zasso](https://github.com/targos)
+
 ## License
 
 [MIT](./LICENSE)
