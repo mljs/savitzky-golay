@@ -13,11 +13,12 @@ This code is based on the article: [Smoothing and Differentiation of Data by Sim
 
 `npm install ml-savitzky-golay`
 
-## SavitzkyGolay(data, h, [options])
+## SavitzkyGolay(data, [options])
 
 Uses the Savitzky-Golay filter based in the array of `y` values(`data`) and the difference between `x` dots(`h`).
 
 __Options__
+* __h__: The difference between the `x` dots, the default value is 1.
 * __windowSize__: The amount of dots used to make the filtering evaluation, the default value is 5.
 * __derivative__: The grade for the derivative, the default value is 1.
 * __polynomial__: The grade of the polynomial function to use for calculation, the default value is 2.
@@ -37,7 +38,7 @@ The default value is 0. The special strings are:
 var SG = require('ml-savitzky-golay');
 var data = [/* ... */];
 var options = {derivative: 0};
-var ans = SG(data, 1, options);
+var ans = SG(data, options);
 console.log(ans); // smoothed data
 ```
 
@@ -50,7 +51,7 @@ var options = {
   pad: 'post',
   padValue: 'replicate'
 };
-var dX = SG(X, 1, options);
+var dX = SG(X, options);
 console.log(dX); // first derivative
 ```
 
