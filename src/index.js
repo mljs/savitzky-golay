@@ -5,6 +5,7 @@ var padArray = require('ml-pad-array');
 var extend = require('extend');
 
 var defaultOptions = {
+    h: 1,
     windowSize: 5,
     derivative: 1,
     polynomial: 2,
@@ -15,11 +16,10 @@ var defaultOptions = {
 /**
  * Savitzky-Golay filter
  * @param {Array <number>} data
- * @param {number} h
  * @param {Object} options
  * @returns {Array}
  */
-function SavitzkyGolay (data, h, options) {
+function SavitzkyGolay (data, options) {
     options = extend({}, defaultOptions, options);
     if ((options.windowSize % 2 === 0) || (options.windowSize < 5) || !(Number.isInteger(options.windowSize)))
         throw new RangeError('Invalid window size (should be odd and at least 5 integer number)');
@@ -62,7 +62,7 @@ function SavitzkyGolay (data, h, options) {
         C = C[options.derivative];
         norm = 1;
     }
-    var det = norm * Math.pow(h, options.derivative);
+    var det = norm * Math.pow(options.h, options.derivative);
     for (var k = step; k < (data.length - step); k++) {
         var d = 0;
         for (var l = 0; l < C.length; l++)
