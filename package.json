@@ -1,6 +1,6 @@
 {
   "name": "ml-savitzky-golay",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Savitzky–Golay filter in Javascript",
   "main": "src/index.js",
   "directories": {
@@ -30,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/mljs/savitzky-golay/issues"
   },
-  "tonicExampleFilename" : "./tonic.js",
+  "tonicExampleFilename": "./tonic.js",
   "homepage": "https://github.com/mljs/savitzky-golay",
   "devDependencies": {
     "mocha": "^2.3.2",
