@@ -56,7 +56,7 @@ function SavitzkyGolay (data, h, options) {
                     J[i][j] = Math.pow((inic + i), j);
             }
         }
-        var Jtranspose = J.transpose();
+        var Jtranspose = J.transposeView();
         var Jinv = (Jtranspose.mmul(J)).inverse();
         C = Jinv.mmul(Jtranspose);
         C = C[options.derivative];
