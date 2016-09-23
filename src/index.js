@@ -64,8 +64,11 @@ function savitzkyGolay(data, h, options) {
         var inic = -(options.windowSize - 1) / 2;
         for (var i = 0; i < J.length; i++) {
             for (var j = 0; j < J[i].length; j++) {
-                if ((inic + 1 !== 0) || (j !== 0))
+
+                /* istanbul ignore next */
+                if ((inic + 1 !== 0) || (j !== 0)) {
                     J[i][j] = Math.pow((inic + i), j);
+                }
             }
         }
         var Jtranspose = J.transposeView();
