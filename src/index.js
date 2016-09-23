@@ -3,6 +3,16 @@
 const Matrix = require('ml-matrix');
 const padArray = require('ml-pad-array');
 
+/**
+ * Factorial of a number
+ * @ignore
+ * @param n
+ * @return {number}
+ */
+function factorial(n) {
+    return n === 0 ? 1 : n * factorial(n - 1);
+}
+
 const defaultOptions = {
     windowSize: 5,
     derivative: 1,
@@ -13,7 +23,7 @@ const defaultOptions = {
 
 /**
  * Savitzky-Golay filter
- * @param {Array<Number>} data - Array of `y` data
+ * @param {Array<Number>} y - Array of `y` data
  * @param {Number} h - Difference between the `x` dots
  * @param {Object} [options] - Options object
  * @param {Number} [options.windowSize = 5] - Amount of dots used to make the filtering evaluation
@@ -30,7 +40,7 @@ const defaultOptions = {
  *  * `'symmetric'`: Pad array with mirror reflections of itself.
  * @return {Array<Number>} - Filtered data
  */
-function savitzkyGolay(data, h, options) {
+function savitzkyGolay(y, h, options) {
     options = Object.assign({}, defaultOptions, options);
     if ((options.windowSize % 2 === 0) || (options.windowSize < 5) || !(Number.isInteger(options.windowSize))) {
         throw new RangeError('Invalid window size (should be odd and at least 5 integer number)');
@@ -42,47 +52,63 @@ function savitzkyGolay(data, h, options) {
         throw new RangeError('Polynomial should be a positive integer');
     }
 
-    var C, norm;
-    var step = Math.floor(options.windowSize / 2);
-
+    const step = (options.windowSize - 1) / 2;
     if (options.pad === 'pre') {
-        data = padArray(data, {size: step, value: options.padValue});
+        y = padArray(y, {size: step, value: options.padValue});
     }
 
-    var ans =  new Array(data.length - 2 * step);
+    let ans =  new Array(y.length - 2 * step);
+    let convolutionCoefficients, divisor;
 
     if ((options.windowSize === 5) && (options.polynomial === 2) && ((options.derivative === 1) || (options.derivative === 2))) {
+        // precalculated values
+        // https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter#Tables_of_selected_convolution_coefficients
         if (options.derivative === 1) {
-            C = [-2, -1, 0, 1, 2];
-            norm = 10;
+            convolutionCoefficients = [-2, -1, 0, 1, 2];
+            divisor = 10;
         } else {
-            C = [2, -1, -2, -1, 2];
-            norm = 7;
+            convolutionCoefficients = [2, -1, -2, -1, 2];
+            divisor = 7;
         }
     } else {
-        var J = Matrix.ones(options.windowSize, options.polynomial + 1);
-        var inic = -(options.windowSize - 1) / 2;
-        for (var i = 0; i < J.length; i++) {
-            for (var j = 0; j < J[i].length; j++) {
+        // change of variable
+        let z = new Array(options.windowSize);
+        for (let i = 0; i < options.windowSize; ++i) {
+            z[i] = i - step;
+        }
 
-                /* istanbul ignore next */
-                if ((inic + 1 !== 0) || (j !== 0)) {
-                    J[i][j] = Math.pow((inic + i), j);
-                }
+        // Jacobian
+        let jacobian = new Array(options.windowSize);
+        for (let row = 0; row < options.windowSize; ++row) {
+            jacobian[row] = new Array(options.polynomial + 1);
+            for (let column = 0; column < options.polynomial + 1; ++column) {
+                jacobian[row][column] = Math.pow(z[row], column);
             }
         }
-        var Jtranspose = J.transposeView();
-        var Jinv = (Jtranspose.mmul(J)).inverse();
-        C = Jinv.mmul(Jtranspose);
-        C = C[options.derivative];
-        norm = 1;
+        jacobian = new Matrix(jacobian);
+
+        // convolution coefficients
+        let transposeJacobian = jacobian.transposeView();
+        let inverseMul = (transposeJacobian.mmul(jacobian)).inverse();
+        convolutionCoefficients = inverseMul.mmul(transposeJacobian);
+
+        // get the correspondent derivative coefficients
+        convolutionCoefficients = convolutionCoefficients.getRow(options.derivative);
+        divisor = 1;
     }
-    var det = norm * Math.pow(h, options.derivative);
-    for (var k = step; k < (data.length - step); k++) {
-        var d = 0;
-        for (var l = 0; l < C.length; l++)
-            d += C[l] * data[l + k - step] / det;
-        ans[k - step] = d;
+
+    // When calculating the nth. derivative an additional scaling factor of n!/h^n
+    if (options.derivative > 0) {
+        divisor *= Math.pow(h, options.derivative) / factorial(options.derivative);
+    }
+
+    // convolution with the coefficients
+    for (let index = 0; index < ans.length; ++index) {
+        ans[index] = 0;
+        for (let i = 0; i < options.windowSize; ++i) {
+            ans[index] += convolutionCoefficients[i] * y[index + i];
+        }
+        ans[index] /= divisor;
     }
 
     if (options.pad === 'post') {

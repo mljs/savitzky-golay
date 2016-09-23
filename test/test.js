@@ -50,7 +50,7 @@ describe('Savitzky–Golay test', function () {
             data[i] = Math.sin(i);
         var ans = SG(data, 1, options);
         for (var j = 2; j < ans.length - 2; j++)
-            ans[j].should.be.approximately(- Math.sin(j), 0.05);
+            ans[j].should.be.approximately(-Math.sin(j), 0.05);
         ans[0].should.equal(0);
     });
 
