@@ -1,11 +1,9 @@
 'use strict';
 
-var Matrix = require('ml-matrix');
-var padArray = require('ml-pad-array');
-var extend = require('extend');
+const Matrix = require('ml-matrix');
+const padArray = require('ml-pad-array');
 
-var defaultOptions = {
-    h: 1,
+const defaultOptions = {
     windowSize: 5,
     derivative: 1,
     polynomial: 2,
@@ -19,8 +17,8 @@ var defaultOptions = {
  * @param {Object} options
  * @returns {Array}
  */
-function SavitzkyGolay (data, options) {
-    options = extend({}, defaultOptions, options);
+function SavitzkyGolay (data, h, options) {
+    options = Object.assign({}, defaultOptions, options);
     if ((options.windowSize % 2 === 0) || (options.windowSize < 5) || !(Number.isInteger(options.windowSize)))
         throw new RangeError('Invalid window size (should be odd and at least 5 integer number)');
     if ((options.derivative < 0) || !(Number.isInteger(options.derivative)))
@@ -62,7 +60,7 @@ function SavitzkyGolay (data, options) {
         C = C[options.derivative];
         norm = 1;
     }
-    var det = norm * Math.pow(options.h, options.derivative);
+    var det = norm * Math.pow(h, options.derivative);
     for (var k = step; k < (data.length - step); k++) {
         var d = 0;
         for (var l = 0; l < C.length; l++)
