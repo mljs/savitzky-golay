@@ -1,8 +1,6 @@
 <a name="2.0.4"></a>
 ## [2.0.4](https://github.com/mljs/savitzky-golay/compare/v2.0.3...v2.0.4) (2016-08-16)
 
-
-
 2.0.3 / 2016-02-18
 ==================
 
