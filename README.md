@@ -1,9 +1,10 @@
 # savitzky-golay
 
-[![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
-[![David deps][david-image]][david-url]
-[![npm download][download-image]][download-url]
+  [![NPM version][npm-image]][npm-url]
+  [![build status][travis-image]][travis-url]
+  [![Test coverage][coveralls-image]][coveralls-url]
+  [![David deps][david-image]][david-url]
+  [![npm download][download-image]][download-url]
 
 Savitzky–Golay filter in Javascript
 
@@ -68,6 +69,8 @@ console.log(dX); // first derivative
 [npm-url]: https://npmjs.org/package/ml-savitzky-golay
 [travis-image]: https://img.shields.io/travis/mljs/savitzky-golay/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/mljs/savitzky-golay
+[coveralls-image]: https://img.shields.io/coveralls/mljs/savitzky-golay.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/github/mljs/savitzky-golay
 [david-image]: https://img.shields.io/david/mljs/savitzky-golay.svg?style=flat-square
 [david-url]: https://david-dm.org/mljs/savitzky-golay
 [download-image]: https://img.shields.io/npm/dm/ml-savitzky-golay.svg?style=flat-square

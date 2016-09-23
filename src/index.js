@@ -17,7 +17,7 @@ const defaultOptions = {
  * @param {Object} options
  * @returns {Array}
  */
-function SavitzkyGolay (data, h, options) {
+function SavitzkyGolay(data, h, options) {
     options = Object.assign({}, defaultOptions, options);
     if ((options.windowSize % 2 === 0) || (options.windowSize < 5) || !(Number.isInteger(options.windowSize)))
         throw new RangeError('Invalid window size (should be odd and at least 5 integer number)');
@@ -33,19 +33,17 @@ function SavitzkyGolay (data, h, options) {
         data = padArray(data, {size: step, value: options.padValue});
     }
 
-    var ans =  new Array(data.length - 2*step);
+    var ans =  new Array(data.length - 2 * step);
 
     if ((options.windowSize === 5) && (options.polynomial === 2) && ((options.derivative === 1) || (options.derivative === 2))) {
         if (options.derivative === 1) {
-            C = [-2,-1,0,1,2];
+            C = [-2, -1, 0, 1, 2];
             norm = 10;
-        }
-        else {
+        } else {
             C = [2, -1, -2, -1, 2];
             norm = 7;
         }
-    }
-    else {
+    } else {
         var J = Matrix.ones(options.windowSize, options.polynomial + 1);
         var inic = -(options.windowSize - 1) / 2;
         for (var i = 0; i < J.length; i++) {
