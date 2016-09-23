@@ -13,18 +13,34 @@ const defaultOptions = {
 
 /**
  * Savitzky-Golay filter
- * @param {Array <number>} data
- * @param {Object} options
- * @returns {Array}
+ * @param {Array<Number>} data - Array of `y` data
+ * @param {Number} h - Difference between the `x` dots
+ * @param {Object} [options] - Options object
+ * @param {Number} [options.windowSize = 5] - Amount of dots used to make the filtering evaluation
+ * @param {Number} [options.derivative = 1] - Grade of the derivative
+ * @param {Number} [options.polynomial = 2] - Grade of the polynomial function to use for calculation
+ * @param {String} [options.pad = 'none'] - How to pad the array to handle borders. Can be one of:
+ *  * `'none'`: No padding. The resulting array will be smaller than the original one.
+ *  * `'pre'`: Pad the original array before applying the filter.
+ *  * `'post'`: Pad the resulting array after applying the filter.
+ * @param {String} [options.padValue = 'replicate'] - If pad is not none, determine how to fill the values, if the value
+ * don't match with the next strings, the new values are going to be filled with that value.The special strings are:
+ *  * `'circular'`: Pad with circular repetition of elements within the dimension.
+ *  * `'replicate'`: Pad by repeating border elements of array.
+ *  * `'symmetric'`: Pad array with mirror reflections of itself.
+ * @return {Array<Number>} - Filtered data
  */
-function SavitzkyGolay(data, h, options) {
+function savitzkyGolay(data, h, options) {
     options = Object.assign({}, defaultOptions, options);
-    if ((options.windowSize % 2 === 0) || (options.windowSize < 5) || !(Number.isInteger(options.windowSize)))
+    if ((options.windowSize % 2 === 0) || (options.windowSize < 5) || !(Number.isInteger(options.windowSize))) {
         throw new RangeError('Invalid window size (should be odd and at least 5 integer number)');
-    if ((options.derivative < 0) || !(Number.isInteger(options.derivative)))
+    }
+    if ((options.derivative < 0) || !(Number.isInteger(options.derivative))) {
         throw new RangeError('Derivative should be a positive integer');
-    if ((options.polynomial < 1) || !(Number.isInteger(options.polynomial)))
+    }
+    if ((options.polynomial < 1) || !(Number.isInteger(options.polynomial))) {
         throw new RangeError('Polynomial should be a positive integer');
+    }
 
     var C, norm;
     var step = Math.floor(options.windowSize / 2);
@@ -73,4 +89,4 @@ function SavitzkyGolay(data, h, options) {
     return ans;
 }
 
-module.exports = SavitzkyGolay;
+module.exports = savitzkyGolay;
