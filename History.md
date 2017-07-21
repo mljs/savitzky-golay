@@ -1,3 +1,18 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/mljs/savitzky-golay/compare/v2.0.4...v3.0.0) (2017-07-21)
+
+
+### Chores
+
+* remove support for Node 4 ([6c0ad01](https://github.com/mljs/savitzky-golay/commit/6c0ad01))
+
+
+### BREAKING CHANGES
+
+* Removed support for Node 4
+
+
+
 <a name="2.0.4"></a>
 ## [2.0.4](https://github.com/mljs/savitzky-golay/compare/v2.0.3...v2.0.4) (2016-08-16)
 
