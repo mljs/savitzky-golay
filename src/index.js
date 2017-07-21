@@ -1,6 +1,8 @@
 'use strict';
 
-var Matrix = require('ml-matrix');
+var matrixLib = require('ml-matrix');
+var Matrix = matrixLib.Matrix;
+var inverse = matrixLib.inverse;
 var padArray = require('ml-pad-array');
 var extend = require('extend');
 
@@ -57,7 +59,7 @@ function SavitzkyGolay (data, h, options) {
             }
         }
         var Jtranspose = J.transposeView();
-        var Jinv = (Jtranspose.mmul(J)).inverse();
+        var Jinv = inverse(Jtranspose.mmul(J));
         C = Jinv.mmul(Jtranspose);
         C = C[options.derivative];
         norm = 1;
