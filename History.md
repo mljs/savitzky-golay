@@ -1,3 +1,17 @@
+# [4.0.0](https://github.com/mljs/savitzky-golay/compare/v3.0.0...v4.0.0) (2019-06-29)
+
+
+### chore
+
+* update dependencies and remove support for Node.js 6 ([8a9ff47](https://github.com/mljs/savitzky-golay/commit/8a9ff47))
+
+
+### BREAKING CHANGES
+
+* Removed support for Node.js 6.
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/mljs/savitzky-golay/compare/v2.0.4...v3.0.0) (2017-07-21)
 
