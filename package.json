@@ -1,14 +1,17 @@
 {
   "name": "ml-savitzky-golay",
   "version": "3.0.0",
-  "description": "Savitzky–Golay filter in Javascript",
+  "description": "Savitzky–Golay filter",
   "main": "src/index.js",
-  "directories": {
-    "lib": "src",
-    "test": "test"
-  },
+  "files": [
+    "src"
+  ],
   "scripts": {
-    "test": "mocha --require should --reporter mocha-better-spec-reporter --recursive"
+    "eslint": "eslint src __tests__",
+    "eslint-fix": "npm run eslint -- --fix",
+    "test": "npm run test-coverage && npm run eslint",
+    "test-only": "jest",
+    "test-coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -23,23 +26,20 @@
     "derivative"
   ],
   "author": "Miguel Asencio <maasencioh@gmail.com> (https://github.com/maasencioh)",
-  "engines": {
-    "node": ">=2.0.0"
-  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mljs/savitzky-golay/issues"
   },
-  "tonicExampleFilename": "./tonic.js",
   "homepage": "https://github.com/mljs/savitzky-golay",
   "devDependencies": {
-    "mocha": "^3.0.2",
-    "mocha-better-spec-reporter": "^3.0.2",
-    "should": "^11.1.0"
+    "eslint": "^6.0.1",
+    "eslint-config-cheminfo": "^1.20.1",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jest": "^22.7.1",
+    "jest": "^24.8.0"
   },
   "dependencies": {
-    "extend": "^3.0.0",
-    "ml-matrix": "^5.0.0",
-    "ml-pad-array": "^1.0.0"
+    "ml-matrix": "^6.1.2",
+    "ml-pad-array": "^2.0.0"
   }
 }
