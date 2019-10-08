@@ -36,7 +36,7 @@ Uses the Savitzky-Golay filter based in the array of `y` values(`data`) and the 
 ### Smoothing
 
 ```js
-const { savitzkyGolay } = require('ml-savitzky-golay');
+const savitzkyGolay = require('ml-savitzky-golay');
 let data = [
   /* ... */
 ];
@@ -48,7 +48,7 @@ console.log(ans); // smoothed data
 or
 
 ```js
-import { savitzkyGolay } from '../src/index';
+import savitzkyGolay from '../src/index';
 
 let data = [
   /* ... */

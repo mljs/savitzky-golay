@@ -16,7 +16,7 @@ const defaultOptions = {
  * @param {Object} options
  * @returns {Array}
  */
-export function savitzkyGolay(data, h, options) {
+export default function savitzkyGolay(data, h, options) {
   options = Object.assign({}, defaultOptions, options);
   if (
     options.windowSize % 2 === 0 ||
