@@ -36,13 +36,25 @@ Uses the Savitzky-Golay filter based in the array of `y` values(`data`) and the 
 ### Smoothing
 
 ```js
-var SG = require('ml-savitzky-golay');
-var data = [
+const { savitzkyGolay } = require('ml-savitzky-golay');
+let data = [
   /* ... */
 ];
-var options = { derivative: 0 };
-var ans = SG(data, 1, options);
+let options = { derivative: 0 };
+let ans = savitzkyGolay(data, 1, options);
 console.log(ans); // smoothed data
+```
+
+or
+
+```js
+import { savitzkyGolay } from '../src/index';
+
+let data = [
+  /* ... */
+];
+let options = { derivative: 0 };
+let ans = savitzkyGolay(data, 1, options);
 ```
 
 ### First derivative with padding
