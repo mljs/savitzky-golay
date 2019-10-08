@@ -1,3 +1,12 @@
+# [4.1.0](https://github.com/mljs/savitzky-golay/compare/v4.0.0...v4.1.0) (2019-10-08)
+
+
+### Bug Fixes
+
+* based on [@targos](https://github.com/targos) comments ([9e33e2f](https://github.com/mljs/savitzky-golay/commit/9e33e2f))
+
+
+
 # [4.0.0](https://github.com/mljs/savitzky-golay/compare/v3.0.0...v4.0.0) (2019-06-29)
 
 
