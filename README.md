@@ -48,7 +48,7 @@ console.log(ans); // smoothed data
 or
 
 ```js
-import savitzkyGolay from '../src/index';
+import savitzkyGolay from 'ml-savitzky-golay';
 
 let data = [
   /* ... */

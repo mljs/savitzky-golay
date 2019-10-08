@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "compile": "rollup -c",
+    "prepublishOnly": "npm run compile",
     "eslint": "eslint src __tests__",
     "eslint-fix": "npm run eslint -- --fix",
     "test": "npm run test-coverage && npm run eslint",
