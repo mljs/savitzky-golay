@@ -32,4 +32,21 @@ describe('Savitzky–Golay test', function() {
     }
     expect(ans[0]).toBe(0);
   });
+
+  it('Second derivative test', function() {
+    let options = {
+      windowSize: 7,
+      derivative: 2,
+      polynomial: 3,
+    };
+    let data = new Array(100);
+    for (let i = 0; i < data.length; i++) {
+      data[i] = Math.pow(i, 3) - 2 * Math.pow(i, 2);
+    }
+    let ans = savitzkyGolay(data, 1, options);
+    expect(ans).toHaveLength(94);
+    for (let j = 0; j < ans.length; j++) {
+      expect(ans[j]).toBeCloseTo(6 * (j + 3) - 4, 2);
+    }
+  });
 });
