@@ -1,3 +1,12 @@
+## [4.1.1](https://github.com/mljs/savitzky-golay/compare/v4.1.0...v4.1.1) (2020-04-14)
+
+
+### Bug Fixes
+
+* scale outputs for derivative >= 2 ([#23](https://github.com/mljs/savitzky-golay/issues/23)) ([7142025](https://github.com/mljs/savitzky-golay/commit/7142025d67f0680256d7165ead0ec3753c95c6aa))
+
+
+
 # [4.1.0](https://github.com/mljs/savitzky-golay/compare/v4.0.0...v4.1.0) (2019-10-08)
 
 
