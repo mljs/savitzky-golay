@@ -1,6 +1,18 @@
 import { Matrix, MatrixTransposeView, inverse } from 'ml-matrix';
 import padArray from 'ml-pad-array';
 
+/**
+ * Factorial of a number
+ * @ignore
+ * @param n
+ * @return {number}
+ */
+function factorial(n) {
+  let r = 1;
+  while (n > 0) r *= n--;
+  return r;
+}
+
 const defaultOptions = {
   windowSize: 5,
   derivative: 1,
@@ -67,7 +79,7 @@ export default function savitzkyGolay(data, h, options) {
     let Jinv = inverse(Jtranspose.mmul(J));
     C = Jinv.mmul(Jtranspose);
     C = C.getRow(options.derivative);
-    norm = 1;
+    norm = 1 / factorial(options.derivative);
   }
   let det = norm * Math.pow(h, options.derivative);
   for (let k = step; k < data.length - step; k++) {
