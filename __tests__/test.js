@@ -1,7 +1,7 @@
 import savitzkyGolay from '../src';
 
-describe('Savitzky–Golay test', function() {
-  it('Smoothing test', function() {
+describe('Savitzky–Golay test', function () {
+  it('Smoothing test', function () {
     let options = {
       windowSize: 5,
       derivative: 0,
@@ -16,7 +16,7 @@ describe('Savitzky–Golay test', function() {
     }
   });
 
-  it('First derivative test', function() {
+  it('First derivative test', function () {
     let options = {
       windowSize: 5,
       derivative: 1,
@@ -33,7 +33,7 @@ describe('Savitzky–Golay test', function() {
     expect(ans[0]).toBe(0);
   });
 
-  it('Second derivative test', function() {
+  it('Second derivative test', function () {
     let options = {
       windowSize: 7,
       derivative: 2,
