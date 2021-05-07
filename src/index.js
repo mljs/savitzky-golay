@@ -82,10 +82,10 @@ export default function savitzkyGolay(data, h, options) {
     norm = 1 / factorial(options.derivative);
   }
   let det = norm * Math.pow(h, options.derivative);
-  for (let k = step; k < data.length - step; k++) {
+  for (let k = 0; k < data.length - step; k++) {
     let d = 0;
-    for (let l = 0; l < C.length; l++) d += (C[l] * data[l + k - step]) / det;
-    ans[k - step] = d;
+    for (let l = 0; l < C.length; l++) d += (C[l] * data[l + k]) / det;
+    ans[k] = d;
   }
 
   if (options.pad === 'post') {
