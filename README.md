@@ -1,7 +1,8 @@
-# savitzky-golay
+# ml-savitzky-golay
 
 [![NPM version][npm-image]][npm-url]
 [![build status][ci-image]][ci-url]
+[![Test coverage][codecov-image]][codecov-url]
 [![npm download][download-image]][download-url]
 
 Savitzky–Golay filter in Javascript.
@@ -67,7 +68,7 @@ var X = [
 var options = {
   derivative: 1,
   pad: 'post',
-  padValue: 'replicate'
+  padValue: 'replicate',
 };
 var dX = SG(X, 1, options);
 console.log(dX); // first derivative
@@ -82,9 +83,11 @@ console.log(dX); // first derivative
 
 [MIT](./LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/ml-savitzky-golay.svg
-[npm-url]: https://npmjs.org/package/ml-savitzky-golay
-[ci-image]: https://github.com/mljs/savitzky-golay/workflows/Node.js%20CI/badge.svg?branch=master
-[ci-url]: https://github.com/mljs/savitzky-golay/actions?query=workflow%3A%22Node.js+CI%22
-[download-image]: https://img.shields.io/npm/dm/ml-savitzky-golay.svg
-[download-url]: https://npmjs.org/package/ml-savitzky-golay
+[npm-image]: https://img.shields.io/npm/v/ml-ml-savitzky-golay.svg
+[npm-url]: https://www.npmjs.com/package/ml-ml-savitzky-golay
+[ci-image]: https://github.com/mljs/ml-savitzky-golay/workflows/Node.js%20CI/badge.svg?branch=main
+[ci-url]: https://github.com/mljs/ml-savitzky-golay/actions?query=workflow%3A%22Node.js+CI%22
+[codecov-image]: https://img.shields.io/codecov/c/github/mljs/ml-savitzky-golay.svg
+[codecov-url]: https://codecov.io/gh/mljs/ml-savitzky-golay
+[download-image]: https://img.shields.io/npm/dm/ml-ml-savitzky-golay.svg
+[download-url]: https://www.npmjs.com/package/ml-ml-savitzky-golay

@@ -2,25 +2,9 @@
   "name": "ml-savitzky-golay",
   "version": "4.1.1",
   "description": "Savitzky–Golay filter",
-  "main": "lib/index.js",
-  "module": "src/index.js",
-  "files": [
-    "src",
-    "lib"
-  ],
-  "scripts": {
-    "compile": "rollup -c",
-    "prepublishOnly": "npm run compile",
-    "eslint": "eslint src __tests__",
-    "eslint-fix": "npm run eslint -- --fix",
-    "test": "npm run test-coverage && npm run eslint",
-    "test-only": "jest",
-    "test-coverage": "jest --coverage"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mljs/savitzky-golay"
-  },
+  "main": "./lib/index.js",
+  "module": "./lib-esm/index.js",
+  "types": "./lib/index.d.ts",
   "keywords": [
     "signal",
     "filtering",
@@ -31,23 +15,50 @@
   ],
   "author": "Miguel Asencio <maasencioh@gmail.com> (https://github.com/maasencioh)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mljs/savitzky-golay/issues"
+  "files": [
+    "src",
+    "lib",
+    "lib-esm"
+  ],
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "clean": "rimraf lib lib-esm",
+    "eslint": "eslint src --cache",
+    "eslint-fix": "npm run eslint -- --fix",
+    "prepack": "npm run tsc",
+    "prettier": "prettier --check src",
+    "prettier-write": "prettier --write src",
+    "test": "npm run test-coverage && npm run eslint && npm run prettier && npm run check-types",
+    "test-coverage": "npm run test-only -- --coverage",
+    "test-only": "jest",
+    "tsc": "npm run clean && npm run tsc-cjs && npm run tsc-esm",
+    "tsc-cjs": "tsc --project tsconfig.cjs.json",
+    "tsc-esm": "tsc --project tsconfig.esm.json"
   },
-  "homepage": "https://github.com/mljs/savitzky-golay",
-  "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
-    "eslint": "^6.8.0",
-    "eslint-config-cheminfo": "^3.0.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jest": "^23.8.2",
-    "eslint-plugin-prettier": "^3.1.3",
-    "jest": "^25.3.0",
-    "prettier": "^2.0.4",
-    "rollup": "^2.6.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mljs/ml-savitzky-golay.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mljs/ml-savitzky-golay/issues"
+  },
+  "homepage": "https://github.com/mljs/ml-savitzky-golay#readme",
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
   },
   "dependencies": {
     "ml-matrix": "^6.4.1",
     "ml-pad-array": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "eslint": "^7.30.0",
+    "eslint-config-cheminfo-typescript": "^8.0.9",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.5"
   }
 }
