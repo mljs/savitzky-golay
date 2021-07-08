@@ -42,7 +42,7 @@
   "bugs": {
     "url": "https://github.com/mljs/savitzky-golay/issues"
   },
-  "homepage": "https://github.com/mljs/ml-savitzky-golay#readme",
+  "homepage": "https://github.com/mljs/savitzky-golay#readme",
   "engines": {
     "node": ">=12"
   },
