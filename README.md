@@ -1,4 +1,4 @@
-# ml-savitzky-golay
+# savitzky-golay
 
 [![NPM version][npm-image]][npm-url]
 [![build status][ci-image]][ci-url]
