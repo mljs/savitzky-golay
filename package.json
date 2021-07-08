@@ -43,6 +43,9 @@
     "url": "https://github.com/mljs/ml-savitzky-golay/issues"
   },
   "homepage": "https://github.com/mljs/ml-savitzky-golay#readme",
+  "engines": {
+    "node": ">=12"
+  },
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"
