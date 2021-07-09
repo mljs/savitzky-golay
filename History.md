@@ -1,3 +1,19 @@
+## [5.0.0](https://github.com/mljs/ml-savitzky-golay/compare/v4.1.1...v5.0.0) (2021-07-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* removed support node 8 and 10
+
+### Features
+
+* update to typescript ([#26](https://github.com/mljs/ml-savitzky-golay/issues/26)) ([26faedb](https://github.com/mljs/ml-savitzky-golay/commit/26faedb3576372a0109d346e6deaa5688718a886))
+
+
+### Bug Fixes
+
+* reduce two operations in loop ([79805b1](https://github.com/mljs/ml-savitzky-golay/commit/79805b1e7da51ca22fd2417e573bef4c73d8c485))
+
 ## [4.1.1](https://github.com/mljs/savitzky-golay/compare/v4.1.0...v4.1.1) (2020-04-14)
 
 

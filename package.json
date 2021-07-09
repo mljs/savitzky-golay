@@ -1,6 +1,6 @@
 {
   "name": "ml-savitzky-golay",
-  "version": "4.1.1",
+  "version": "5.0.0",
   "description": "Savitzky–Golay filter",
   "main": "./lib/index.js",
   "module": "./lib-esm/index.js",
