@@ -74,6 +74,8 @@ var dX = SG(X, 1, options);
 console.log(dX); // first derivative
 ```
 
+## [API Documentation](https://mljs.github.io/savitzky-golay/)
+
 ## Contributors
 
 - [Miguel Asencio](https://github.com/maasencioh)
