@@ -85,7 +85,7 @@ console.log(dX); // first derivative
 
 [npm-image]: https://img.shields.io/npm/v/ml-savitzky-golay.svg
 [npm-url]: https://www.npmjs.com/package/ml-savitzky-golay
-[ci-image]: https://github.com/mljs/savitzky-golay/workflows/Node.js%20CI/badge.svg?branch=master
+[ci-image]: https://github.com/mljs/savitzky-golay/workflows/Node.js%20CI/badge.svg?branch=main
 [ci-url]: https://github.com/mljs/savitzky-golay/actions?query=workflow%3A%22Node.js+CI%22
 [codecov-image]: https://img.shields.io/codecov/c/github/mljs/savitzky-golay.svg
 [codecov-url]: https://codecov.io/gh/mljs/savitzky-golay
