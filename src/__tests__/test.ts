@@ -1,4 +1,4 @@
-import savitzkyGolay from '../src';
+import savitzkyGolay from '..';
 
 describe('Savitzky–Golay test', function () {
   it('Smoothing test', function () {
@@ -21,7 +21,7 @@ describe('Savitzky–Golay test', function () {
       windowSize: 5,
       derivative: 1,
       polynomial: 3,
-      pad: 'post',
+      pad: 'post' as const,
       padValue: 0,
     };
     let data = new Array(200);
