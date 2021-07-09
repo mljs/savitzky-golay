@@ -1,0 +1,185 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ml-savitzky-golay</title>
+	<meta name="description" content="Documentation for ml-savitzky-golay">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">ml-savitzky-golay</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>ml-savitzky-golay</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#savitzky-golay" id="savitzky-golay" style="color: inherit; text-decoration: none;">
+					<h1>savitzky-golay</h1>
+				</a>
+				<p><a href="https://www.npmjs.com/package/ml-savitzky-golay"><img src="https://img.shields.io/npm/v/ml-savitzky-golay.svg" alt="NPM version"></a>
+					<a href="https://github.com/mljs/savitzky-golay/actions?query=workflow%3A%22Node.js+CI%22"><img src="https://github.com/mljs/savitzky-golay/workflows/Node.js%20CI/badge.svg?branch=main" alt="build status"></a>
+					<a href="https://codecov.io/gh/mljs/savitzky-golay"><img src="https://img.shields.io/codecov/c/github/mljs/savitzky-golay.svg" alt="Test coverage"></a>
+				<a href="https://www.npmjs.com/package/ml-savitzky-golay"><img src="https://img.shields.io/npm/dm/ml-savitzky-golay.svg" alt="npm download"></a></p>
+				<p>Savitzky–Golay filter in Javascript.</p>
+				<p>This code is based on the article: <a href="http://dx.doi.org/10.1021/ac60214a047">Smoothing and Differentiation of Data by Simplified Least Squares Procedures</a></p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<p><code>$ npm i ml-savitzky-golay</code></p>
+				<a href="#savitzkygolaydata-h-options" id="savitzkygolaydata-h-options" style="color: inherit; text-decoration: none;">
+					<h2>SavitzkyGolay(data, h, [options])</h2>
+				</a>
+				<p>Uses the Savitzky-Golay filter based in the array of <code>y</code> values(<code>data</code>) and the difference between <code>x</code> dots(<code>h</code>).</p>
+				<p><strong>Options</strong>:</p>
+				<ul>
+					<li><strong>windowSize</strong>: The amount of dots used to make the filtering evaluation, the default value is 5.</li>
+					<li><strong>derivative</strong>: The grade for the derivative, the default value is 1.</li>
+					<li><strong>polynomial</strong>: The grade of the polynomial function to use for calculation, the default value is 2.</li>
+					<li><strong>pad</strong>: How to pad the array to handle borders. Can be one of:<ul>
+							<li><code>&#39;none&#39;</code> (default): No padding. The resulting array will be smaller than the original one.</li>
+							<li><code>&#39;pre&#39;</code>: Pad the original array before applying the filter</li>
+							<li><code>&#39;post&#39;</code>: Pad the resulting array after applying the filter</li>
+						</ul>
+					</li>
+					<li><strong>padValue</strong>: If pad is not none, Determine how to fill the values, if the value don&#39;t match with the next strings, the new values are going to be filled with that value.
+						The default value is 0. The special strings are:<ul>
+							<li><code>&#39;circular&#39;</code>: Pad with circular repetition of elements within the dimension.</li>
+							<li><code>&#39;replicate&#39;</code>: Pad by repeating border elements of array.</li>
+							<li><code>&#39;symmetric&#39;</code>: Pad array with mirror reflections of itself.</li>
+						</ul>
+					</li>
+				</ul>
+				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+					<h2>Examples</h2>
+				</a>
+				<a href="#smoothing" id="smoothing" style="color: inherit; text-decoration: none;">
+					<h3>Smoothing</h3>
+				</a>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">savitzkyGolay</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ml-savitzky-golay&#039;</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">data</span><span style="color: #000000"> = [</span>
+<span style="color: #000000">  </span><span style="color: #008000">/* ... */</span>
+<span style="color: #000000">];</span>
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">options</span><span style="color: #000000"> = { </span><span style="color: #001080">derivative:</span><span style="color: #000000"> </span><span style="color: #098658">0</span><span style="color: #000000"> };</span>
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">ans</span><span style="color: #000000"> = </span><span style="color: #795E26">savitzkyGolay</span><span style="color: #000000">(</span><span style="color: #001080">data</span><span style="color: #000000">, </span><span style="color: #098658">1</span><span style="color: #000000">, </span><span style="color: #001080">options</span><span style="color: #000000">);</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">ans</span><span style="color: #000000">); </span><span style="color: #008000">// smoothed data</span>
+</code></pre>
+				<p>or</p>
+				<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">savitzkyGolay</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;ml-savitzky-golay&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">data</span><span style="color: #000000"> = [</span>
+<span style="color: #000000">  </span><span style="color: #008000">/* ... */</span>
+<span style="color: #000000">];</span>
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">options</span><span style="color: #000000"> = { </span><span style="color: #001080">derivative:</span><span style="color: #000000"> </span><span style="color: #098658">0</span><span style="color: #000000"> };</span>
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">ans</span><span style="color: #000000"> = </span><span style="color: #795E26">savitzkyGolay</span><span style="color: #000000">(</span><span style="color: #001080">data</span><span style="color: #000000">, </span><span style="color: #098658">1</span><span style="color: #000000">, </span><span style="color: #001080">options</span><span style="color: #000000">);</span>
+</code></pre>
+				<a href="#first-derivative-with-padding" id="first-derivative-with-padding" style="color: inherit; text-decoration: none;">
+					<h3>First derivative with padding</h3>
+				</a>
+				<pre><code class="language-js"><span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #0070C1">SG</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ml-savitzky-golay&#039;</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #0070C1">X</span><span style="color: #000000"> = [</span>
+<span style="color: #000000">  </span><span style="color: #008000">/* ... */</span>
+<span style="color: #000000">];</span>
+<span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #001080">options</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">  </span><span style="color: #001080">derivative:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">pad:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;post&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">padValue:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;replicate&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">};</span>
+<span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #001080">dX</span><span style="color: #000000"> = </span><span style="color: #795E26">SG</span><span style="color: #000000">(</span><span style="color: #0070C1">X</span><span style="color: #000000">, </span><span style="color: #098658">1</span><span style="color: #000000">, </span><span style="color: #001080">options</span><span style="color: #000000">);</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">dX</span><span style="color: #000000">); </span><span style="color: #008000">// first derivative</span>
+</code></pre>
+				<a href="#api-documentation" id="api-documentation" style="color: inherit; text-decoration: none;">
+					<h2><a href="https://mljs.github.io/savitzky-golay/">API Documentation</a></h2>
+				</a>
+				<a href="#contributors" id="contributors" style="color: inherit; text-decoration: none;">
+					<h2>Contributors</h2>
+				</a>
+				<ul>
+					<li><a href="https://github.com/maasencioh">Miguel Asencio</a></li>
+					<li><a href="https://github.com/targos">Michaël Zasso</a></li>
+				</ul>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
+				<p><a href="./LICENSE">MIT</a></p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/options.html" class="tsd-kind-icon">Options</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#default" class="tsd-kind-icon">default</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
